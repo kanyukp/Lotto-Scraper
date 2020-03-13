@@ -11,9 +11,10 @@ def parse(url):
     sourceCode = response.page_source
     return sourceCode
 
-file = open('ticket_urls.txt' , 'r')
+file = open('tix_urls.txt' , 'r')
 lines = file.readlines()
 file.close()
+print(len(lines))
 for line in lines:
     soup = BeautifulSoup(parse(line),'html.parser')
 
@@ -103,6 +104,8 @@ for line in lines:
     with open('ticket_expvals.txt', 'a') as f:
         f.write(str(start_expval))
         f.write('\n')
+        
+    with open('ticket_estvals.txt', 'a') as f:
         f.write(str(current_expval))
         f.write('\n')
 
